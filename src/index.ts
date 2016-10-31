@@ -3,7 +3,7 @@
 import * as cote from 'cote';
 import SingleInit from 'single-init';
 
-import debug from 'debug';
+import * as debug from 'debug';
 
 const log = debug('cotez:info');
 const logError = debug('cotez:error');
@@ -21,7 +21,7 @@ export class Requester {
     private client: SingleInit<any>;
 
     constructor(name: string) {
-        log('new Requester("' + name '")');
+        log('new Requester("' + name + '")');
         this.client = new SingleInit((done) => {
             log('Instantiating client');
             let client = new cote.Requester({ name });
