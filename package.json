@@ -1,6 +1,6 @@
 {
   "name": "cotez",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "cote but with simpler, promise based, API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

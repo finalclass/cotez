@@ -12,10 +12,6 @@ export interface ICoteEvent {
     type: string;
 }
 
-export interface ICoteRequest {
-    val: any;
-}
-
 export class Requester {
 
     private clientSingleInit: SingleInit<any>;
@@ -55,9 +51,9 @@ export class Responder {
         this.coteResponder = new cote.Responder(advertisement);
     }
 
-    on(eventType: string, handler: (req: ICoteRequest) => Promise<any>) {
+    on(eventType: string, handler: (req: ICoteEvent) => Promise<any>) {
         log('Start listening for ' + eventType);
-        this.coteResponder.on(eventType, (req:ICoteRequest, done) => {
+        this.coteResponder.on(eventType, (req:ICoteEvent, done) => {
             log('Got request for event ' + eventType);
             handler(req).then(done).catch((err) => {throw err});
         });
