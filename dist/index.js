@@ -21,7 +21,7 @@ var Requester = (function () {
         log('Sending event', event.type);
         return this.clientSingleInit.get().then(function (client) {
             return new Promise(function (resolve, reject) {
-                client.get(event, function (result) {
+                client.send(event, function (result) {
                     resolve(result);
                     log('Got result', result);
                 });
