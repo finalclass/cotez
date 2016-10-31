@@ -36,7 +36,7 @@ export class Requester {
         log('Sending event', event.type);
         return this.clientSingleInit.get().then((client) => {
             return new Promise((resolve, reject) => {
-                client.get(event, (result) => {
+                client.send(event, (result) => {
                     resolve(result);
                     log('Got result', result);
                 });

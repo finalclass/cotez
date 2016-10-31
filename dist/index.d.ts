@@ -6,7 +6,7 @@ export interface ICoteRequest {
     val: any;
 }
 export declare class Requester {
-    private client;
+    private clientSingleInit;
     constructor(name: string);
     send(event: ICoteEvent): Promise<{}>;
 }

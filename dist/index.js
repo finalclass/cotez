@@ -8,18 +8,18 @@ var logError = debug('cotez:error');
 var Requester = (function () {
     function Requester(name) {
         log('new Requester("' + name + '")');
-        this.client = new single_init_1.default(function (done) {
+        this.clientSingleInit = new single_init_1.default(function (done) {
             log('Instantiating client');
             var client = new cote.Requester({ name: name });
             client.on('ready', function () {
                 log('Client reqdy');
-                done(client);
+                done(null, client);
             });
         });
     }
     Requester.prototype.send = function (event) {
         log('Sending event', event.type);
-        return this.client.get().then(function (client) {
+        return this.clientSingleInit.get().then(function (client) {
             return new Promise(function (resolve, reject) {
                 client.get(event, function (result) {
                     resolve(result);
