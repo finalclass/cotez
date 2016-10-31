@@ -3,5 +3,4 @@ declare module "cote" {
     export var Responder: any;
     export var Publisher: any;
     export var Subscriber: any;
-
 }

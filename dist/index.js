@@ -19,5 +19,16 @@ var Requester = (function () {
     return Requester;
 }());
 exports.Requester = Requester;
-exports.Responder = cote.Responder;
+var Responder = (function () {
+    function Responder(advertisement) {
+        this.coteResponder = new cote.Responder(advertisement);
+    }
+    Responder.prototype.on = function (eventType, handler) {
+        this.coteResponder.on(eventType, function (req, done) {
+            handler(req).then(done).catch(function (err) { throw err; });
+        });
+    };
+    return Responder;
+}());
+exports.Responder = Responder;
 //# sourceMappingURL=index.js.map
