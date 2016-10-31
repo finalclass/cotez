@@ -27,3 +27,5 @@ export class Requester {
     }
 
 }
+
+export var Responder = cote.Responder;
