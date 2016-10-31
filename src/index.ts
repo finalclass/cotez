@@ -18,23 +18,23 @@ export interface ICoteRequest {
 
 export class Requester {
 
-    private client: SingleInit<any>;
+    private clientSingleInit: SingleInit<any>;
 
     constructor(name: string) {
         log('new Requester("' + name + '")');
-        this.client = new SingleInit((done) => {
+        this.clientSingleInit = new SingleInit((done) => {
             log('Instantiating client');
             let client = new cote.Requester({ name });
             client.on('ready', () => {
                 log('Client reqdy');
-                done(client);
+                done(null, client);
             });
         });
     }
 
     public send(event: ICoteEvent) {
         log('Sending event', event.type);
-        return this.client.get().then((client) => {
+        return this.clientSingleInit.get().then((client) => {
             return new Promise((resolve, reject) => {
                 client.get(event, (result) => {
                     resolve(result);
