@@ -11,7 +11,7 @@ var Requester = (function () {
     }
     Requester.prototype.send = function (event) {
         return this.client.get().then(function (client) {
-            return new Promise(function (resolve) {
+            return new Promise(function (resolve, reject) {
                 client.get(event, resolve);
             });
         });
