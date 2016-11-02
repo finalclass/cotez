@@ -16,11 +16,11 @@ export class Requester {
 
     private clientSingleInit: SingleInit<any>;
 
-    constructor(name: string) {
+    constructor(advert:any) {
         log('new Requester("' + name + '")');
         this.clientSingleInit = new SingleInit((done) => {
             log('Instantiating client');
-            let client = new cote.Requester({ name });
+            let client = new cote.Requester(advert);
             client.on('ready', () => {
                 log('Client reqdy');
                 done(null, client);

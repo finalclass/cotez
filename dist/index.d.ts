@@ -2,9 +2,6 @@
 export interface ICoteEvent {
     type: string;
 }
-export interface ICoteRequest {
-    val: any;
-}
 export declare class Requester {
     private clientSingleInit;
     constructor(name: string);
@@ -16,5 +13,5 @@ export declare class Responder {
         name: string;
         respondsTo: string[];
     });
-    on(eventType: string, handler: (req: ICoteRequest) => Promise<any>): void;
+    on(eventType: string, handler: (req: ICoteEvent) => Promise<any>): void;
 }
