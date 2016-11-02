@@ -17,7 +17,7 @@ export class Requester {
     private clientSingleInit: SingleInit<any>;
 
     constructor(advert:any) {
-        log('new Requester("' + name + '")');
+        log('new Requester("' + advert.name + '")');
         this.clientSingleInit = new SingleInit((done) => {
             log('Instantiating client');
             let client = new cote.Requester(advert);
@@ -46,7 +46,7 @@ export class Responder {
 
     private coteResponder: any;
 
-    constructor(advertisement: { name: string; respondsTo: string[] }) {
+    constructor(advertisement: any) {
         log('new Responder("' + advertisement.name + '")');
         this.coteResponder = new cote.Responder(advertisement);
     }

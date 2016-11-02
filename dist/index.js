@@ -6,11 +6,11 @@ var debug = require('debug');
 var log = debug('cotez:info');
 var logError = debug('cotez:error');
 var Requester = (function () {
-    function Requester(name) {
-        log('new Requester("' + name + '")');
+    function Requester(advert) {
+        log('new Requester("' + advert.name + '")');
         this.clientSingleInit = new single_init_1.default(function (done) {
             log('Instantiating client');
-            var client = new cote.Requester({ name: name });
+            var client = new cote.Requester(advert);
             client.on('ready', function () {
                 log('Client reqdy');
                 done(null, client);

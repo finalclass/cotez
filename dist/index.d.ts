@@ -4,7 +4,7 @@ export interface ICoteEvent {
 }
 export declare class Requester {
     private clientSingleInit;
-    constructor(name: string);
+    constructor(advert: any);
     send(event: ICoteEvent): Promise<{}>;
 }
 export declare class Responder {
