@@ -23,7 +23,6 @@ var Requester = (function () {
             return new Promise(function (resolve, reject) {
                 client.send(event, function (result) {
                     resolve(result);
-                    log('Got result', result);
                 });
             });
         });
@@ -38,9 +37,9 @@ var Responder = (function () {
     }
     Responder.prototype.on = function (eventType, handler) {
         log('Start listening for ' + eventType);
-        this.coteResponder.on(eventType, function (req, done) {
+        this.coteResponder.on(eventType, function (event, done) {
             log('Got request for event ' + eventType);
-            handler(req).then(done).catch(function (err) { throw err; });
+            handler(event).then(done).catch(function (err) { throw err; });
         });
     };
     return Responder;

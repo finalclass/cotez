@@ -16,7 +16,7 @@ export class Requester {
 
     private clientSingleInit: SingleInit<any>;
 
-    constructor(advert:any) {
+    constructor(advert: any) {
         log('new Requester("' + advert.name + '")');
         this.clientSingleInit = new SingleInit((done) => {
             log('Instantiating client');
@@ -34,7 +34,6 @@ export class Requester {
             return new Promise((resolve, reject) => {
                 client.send(event, (result) => {
                     resolve(result);
-                    log('Got result', result);
                 });
             });
         });
@@ -51,11 +50,11 @@ export class Responder {
         this.coteResponder = new cote.Responder(advertisement);
     }
 
-    on(eventType: string, handler: (req: ICoteEvent) => Promise<any>) {
+    public on(eventType: string, handler: (event: ICoteEvent) => Promise<any>) {
         log('Start listening for ' + eventType);
-        this.coteResponder.on(eventType, (req:ICoteEvent, done) => {
+        this.coteResponder.on(eventType, (event: ICoteEvent, done) => {
             log('Got request for event ' + eventType);
-            handler(req).then(done).catch((err) => {throw err});
+            handler(event).then(done).catch((err) => { throw err });
         });
     }
 }

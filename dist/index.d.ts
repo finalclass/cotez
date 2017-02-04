@@ -9,9 +9,6 @@ export declare class Requester {
 }
 export declare class Responder {
     private coteResponder;
-    constructor(advertisement: {
-        name: string;
-        respondsTo: string[];
-    });
-    on(eventType: string, handler: (req: ICoteEvent) => Promise<any>): void;
+    constructor(advertisement: any);
+    on(eventType: string, handler: (event: ICoteEvent) => Promise<any>): void;
 }

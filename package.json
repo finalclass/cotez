@@ -1,6 +1,6 @@
 {
   "name": "cotez",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "cote but with simpler, promise based, API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/finalclass/cotez#readme",
   "dependencies": {
-    "cote": "^0.9.2",
+    "cote": "0.9.3",
     "single-init": "^1.1.0",
     "debug": "2.2.0"
   },
